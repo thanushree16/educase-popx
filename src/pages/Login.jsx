@@ -1,25 +1,29 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const isValid = email.trim() !== '' && password.trim() !== ''
-
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const isValid = emailRegex.test(email) && password.trim() !== "";
+  
   const handleLogin = () => {
-    if (isValid) navigate('/profile')
-  }
+    if (isValid) navigate("/profile");
+  };
 
   return (
     <div className="phone-container">
       <div className="auth-page">
         <h1 className="auth-title">
-          Signin to your<br />PopX account
+          Signin to your
+          <br />
+          PopX account
         </h1>
         <p className="auth-subtitle">
-          Lorem ipsum dolor sit amet,<br />
+          Lorem ipsum dolor sit amet,
+          <br />
           consectetur adipiscing elit,
         </p>
 
@@ -54,5 +58,5 @@ export default function Login() {
         )}
       </div>
     </div>
-  )
+  );
 }
